@@ -7,7 +7,6 @@ import (
 	"mini-bank/src/models"
 	"mini-bank/src/routes"
 	"net/http"
-	"os"
 
 	"github.com/go-playground/locales/en"
 	"github.com/go-playground/locales/id"
@@ -21,7 +20,6 @@ import (
 var (
 	validatorDriver *validator.Validate
 	Uni             *ut.UniversalTranslator
-	translator      ut.Translator
 )
 
 func main() {
@@ -67,11 +65,5 @@ func ValidatorInit() {
 	err = idTranslations.RegisterDefaultTranslations(validatorDriver, transID)
 	if err != nil {
 		fmt.Println(err)
-	}
-	switch os.Getenv("APP_LOCALE") {
-	case "en":
-		translator = transEN
-	case "id":
-		translator = transID
 	}
 }
