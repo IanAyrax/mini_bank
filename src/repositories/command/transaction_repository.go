@@ -2,6 +2,7 @@ package command
 
 import (
 	"fmt"
+	"mini-bank/src/interfaces/repositories/command"
 	"mini-bank/src/models"
 
 	"gorm.io/gorm"
@@ -11,7 +12,7 @@ type TransactionRepository struct {
 	DB *gorm.DB
 }
 
-func NewCommandTransactionRepository(db *gorm.DB) *TransactionRepository {
+func NewCommandTransactionRepository(db *gorm.DB) command.ITransactionRepository {
 	return &TransactionRepository{DB: db}
 }
 

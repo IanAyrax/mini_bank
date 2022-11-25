@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"mini-bank/src/interfaces/handlers"
 	"mini-bank/src/requests"
 	"mini-bank/src/responses"
 	"mini-bank/src/services"
@@ -14,7 +15,7 @@ type AccountHandler struct {
 	Handler
 }
 
-func NewAccountHandler(handler Handler) *AccountHandler {
+func NewAccountHandler(handler Handler) handlers.IAccountHandler {
 	return &AccountHandler{Handler: handler}
 }
 

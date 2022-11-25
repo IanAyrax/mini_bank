@@ -1,6 +1,7 @@
 package command
 
 import (
+	"mini-bank/src/interfaces/repositories/command"
 	"mini-bank/src/models"
 
 	"gorm.io/gorm"
@@ -10,7 +11,7 @@ type AccountRepository struct {
 	DB *gorm.DB
 }
 
-func NewCommandAccountRepository(db *gorm.DB) *AccountRepository {
+func NewCommandAccountRepository(db *gorm.DB) command.IAccountRepository {
 	return &AccountRepository{DB: db}
 }
 

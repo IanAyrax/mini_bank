@@ -2,6 +2,7 @@ package services
 
 import (
 	"fmt"
+	"mini-bank/src/interfaces/services"
 	"mini-bank/src/models"
 	"mini-bank/src/repositories/command"
 	"mini-bank/src/repositories/query"
@@ -14,7 +15,7 @@ type TransactionService struct {
 	*Contract
 }
 
-func NewTransactionService(contract *Contract) *TransactionService {
+func NewTransactionService(contract *Contract) services.ITransactionService {
 	return &TransactionService{Contract: contract}
 }
 

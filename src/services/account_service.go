@@ -1,6 +1,7 @@
 package services
 
 import (
+	"mini-bank/src/interfaces/services"
 	"mini-bank/src/models"
 	"mini-bank/src/repositories/command"
 	"mini-bank/src/repositories/query"
@@ -14,7 +15,7 @@ type AccountService struct {
 	*Contract
 }
 
-func NewAccountService(contract *Contract) *AccountService {
+func NewAccountService(contract *Contract) services.IAccountService {
 	return &AccountService{Contract: contract}
 }
 

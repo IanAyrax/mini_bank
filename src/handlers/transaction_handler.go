@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"errors"
+	"mini-bank/src/interfaces/handlers"
 	"mini-bank/src/requests"
 	"mini-bank/src/responses"
 	"mini-bank/src/services"
@@ -15,7 +16,7 @@ type TransactionHandler struct {
 	Handler
 }
 
-func NewTransactionHandler(handler Handler) *TransactionHandler {
+func NewTransactionHandler(handler Handler) handlers.ITransactionHandler {
 	return &TransactionHandler{Handler: handler}
 }
 

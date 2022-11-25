@@ -1,6 +1,7 @@
 package query
 
 import (
+	"mini-bank/src/interfaces/repositories/query"
 	"mini-bank/src/models"
 
 	"gorm.io/gorm"
@@ -10,7 +11,7 @@ type TransactionRepository struct {
 	DB *gorm.DB
 }
 
-func NewQueryTransactionRepository(db *gorm.DB) *TransactionRepository {
+func NewQueryTransactionRepository(db *gorm.DB) query.ITransactionRepository {
 	return &TransactionRepository{DB: db}
 }
 
