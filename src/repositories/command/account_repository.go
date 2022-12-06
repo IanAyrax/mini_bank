@@ -1,6 +1,7 @@
 package command
 
 import (
+	"fmt"
 	"mini-bank/src/interfaces/repositories/command"
 	"mini-bank/src/models"
 
@@ -18,6 +19,9 @@ func NewCommandAccountRepository(db *gorm.DB) command.IAccountRepository {
 func (AccountRepository) Create(account models.Account, tx *gorm.DB) (res models.Account, err error) {
 	err = tx.Create(&account).Error
 	if err != nil {
+		fmt.Println("ERROR : ")
+		fmt.Println(err)
+
 		return res, err
 	}
 	return account, nil

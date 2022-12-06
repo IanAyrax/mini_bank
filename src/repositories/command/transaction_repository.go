@@ -17,14 +17,14 @@ func NewCommandTransactionRepository(db *gorm.DB) command.ITransactionRepository
 }
 
 func (TransactionRepository) Create(transaction models.Transaction, tx *gorm.DB) (res models.Transaction, err error) {
-	err = tx.Create(&transaction).Find(&res).Error
+	err = tx.Create(&transaction).Error
 	if err != nil {
 		return res, err
 	}
 
-	fmt.Println(res)
+	fmt.Println(transaction)
 
-	return res, nil
+	return transaction, nil
 }
 
 func (TransactionRepository) Update(transaction models.Transaction, tx *gorm.DB) (res models.Transaction, err error) {

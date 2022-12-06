@@ -1,6 +1,7 @@
 package services
 
 import (
+	"errors"
 	"fmt"
 	"mini-bank/src/interfaces/services"
 	"mini-bank/src/models"
@@ -23,6 +24,10 @@ func (transactionService TransactionService) Create(req *requests.TransactionReq
 	db := transactionService.DB
 	repo := command.NewCommandTransactionRepository(db)
 
+	if req.CreditAccount == req.DebitAccount {
+		return res, errors.New("Credit Account and Debit Account can't be the same ID")
+	}
+
 	model := models.Transaction{
 		Amount:        req.Amount,
 		CreditAccount: req.CreditAccount,
@@ -31,6 +36,9 @@ func (transactionService TransactionService) Create(req *requests.TransactionReq
 	}
 
 	transaction, err := repo.Create(model, db)
+	if err != nil {
+		return nil, err
+	}
 
 	res = view_models.NewTransactionVm().BuildDetail(transaction)
 

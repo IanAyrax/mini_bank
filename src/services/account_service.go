@@ -30,6 +30,9 @@ func (accountService AccountService) Create(req *requests.AccountRequest) (res *
 	}
 
 	account, err := repo.Create(model, db)
+	if err != nil {
+		return nil, err
+	}
 
 	res = view_models.NewAccountVm().BuildDetail(account)
 
